@@ -8,7 +8,8 @@ import Navbar from 'react-bootstrap/Navbar'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+export default function Home({ news, createDate }) {
+  var i = 0;
   return (
     <>
       <Head>
@@ -18,16 +19,16 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Navbar variant="dark" expand="lg" fixed="top">
+      <Navbar variant="dark" collapseOnSelect expand="lg" fixed="top">
         <Container>
           <Navbar.Brand href="#home">beauty salon</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
-              <Nav.Link href="#menu" className="px-3">Hair-Menu</Nav.Link>
+              <Nav.Link href="#news" className="px-3">News</Nav.Link>
+              <Nav.Link href="#menu" className="px-3">Menu</Nav.Link>
               <Nav.Link href="#catalog" className="px-3">Catalog</Nav.Link>
               <Nav.Link href="#staff" className="px-3">Staff</Nav.Link>
-              <Nav.Link href="#news" className="px-3">News</Nav.Link>
               <Nav.Link href="#reserve" className="px-3">Reserve</Nav.Link>
               <Nav.Link href="#access" className="px-3">Access</Nav.Link>
             </Nav>
@@ -54,6 +55,9 @@ export default function Home() {
         </div>
       </header>
       <main>
+        <div className="vh-100 pt-5 text-center" id="news">
+          <h1 className="py-5">NEWS</h1>
+        </div>
         <div className="vh-100 bg-primary" id="menu">
           
         </div>
@@ -63,9 +67,6 @@ export default function Home() {
         <div className="vh-100 bg-success" id="staff">
           
         </div>
-        <div className="vh-100 bg-danger" id="news">
-          
-        </div>
         <div className="vh-100 bg-warning" id="reserve">
           
         </div>
@@ -73,6 +74,9 @@ export default function Home() {
           
         </div>
       </main>
+      <footer>
+        
+      </footer>
 
     </>
   )
