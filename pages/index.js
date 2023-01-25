@@ -32,7 +32,7 @@ export default function Home() {
               <Nav.Link href="#access" className="px-3">Access</Nav.Link>
             </Nav>
             <div className="ps-5 text-end">
-              <span className="tel">000-000-0000</span>
+              <a className="tel" href="tel:000-000-0000">000-000-0000</a>
               <span className="d-block hours">OPEN 9:30-20:00</span>
             </div>
           </Navbar.Collapse>

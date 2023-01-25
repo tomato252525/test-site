@@ -23,6 +23,11 @@ a.nav-link:hover {
 .tel {
   font-size: 1.5rem;
   color: white;
+  text-decoration: none;
+}
+
+.tel:hover {
+  color: gray;
 }
 
 .hours {
