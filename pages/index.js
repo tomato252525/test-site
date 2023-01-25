@@ -1,12 +1,28 @@
 import Head from 'next/head'
 import { Inter } from '@next/font/google'
+import { client } from "@/libs/client";
 import 'bootstrap/dist/css/bootstrap.min.css'
-import styles from '@/styles/Home.module.css'
 import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 
 const inter = Inter({ subsets: ['latin'] })
+
+export const getStaticProps = async() => {
+  const data = await client.get({ endpoint: "news" });
+  const createDate = data.contents.map((content) => 
+    new Date(Date.parse(content.publishedAt)+32400000)
+    .toLocaleDateString('ja-JP')
+    .replace(/\//g, '/')
+  );
+
+  return {
+    props: {
+      news: data.contents,
+      createDate,
+    },
+  };
+};
 
 export default function Home({ news, createDate }) {
   var i = 0;
@@ -57,6 +73,14 @@ export default function Home({ news, createDate }) {
       <main>
         <div className="vh-100 pt-5 text-center" id="news">
           <h1 className="py-5">NEWS</h1>
+          <ul className="list-group">
+            { news.map((news) => (
+              <a key={news.id} href={`news/${news.id}`} className="list-group-item list-group-item-action list d-flex justify-content-between">
+                <div>{news.title}</div>
+                <div>{createDate[i++]}</div>
+              </a>
+            ))}
+          </ul>
         </div>
         <div className="vh-100 bg-primary" id="menu">
           

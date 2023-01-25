@@ -1,0 +1,62 @@
+.main {
+  width: 850px;
+  margin: 0 auto;
+}
+
+.title {
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+.publishedAt {
+  margin-bottom: 40px;
+}
+
+@media (max-width: 992px) {
+  .main {
+    width: 90%;
+  }
+}
+
+@media (max-width: 459px) {
+  .main {
+    width: 100%;
+  }
+}
+
+.post {
+  & > h1 {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 40px 0 20px;
+    background-color: #eee;
+    padding: 10px 20px;
+    border-radius: 5px;
+  }
+
+  & > h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 40px 0 16px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  & > p {
+    line-height: 1.8;
+    letter-spacing: 0.2px;
+  }
+
+  & > ol {
+    list-style-type: decimal;
+    list-style-position: inside;
+  }
+
+  & > p > img {
+    width: 80%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  
+}
