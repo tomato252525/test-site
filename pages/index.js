@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
+import { Card, ListGroup } from 'react-bootstrap';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -71,9 +72,9 @@ export default function Home({ news, createDate }) {
         </div>
       </header>
       <main>
-        <div className="vh-100 pt-5 text-center" id="news">
-          <h1 className="py-5">NEWS</h1>
-          <ul className="list-group">
+        <div className="max-vh-100 py-5 text-center" id="news">
+          <h1 className="py-5 fw-bold">NEWS</h1>
+          <ul className="list-group news-w mx-auto pb-5">
             { news.map((news) => (
               <a key={news.id} href={`news/${news.id}`} className="list-group-item list-group-item-action list d-flex justify-content-between">
                 <div>{news.title}</div>
@@ -82,16 +83,109 @@ export default function Home({ news, createDate }) {
             ))}
           </ul>
         </div>
-        <div className="vh-100 bg-primary" id="menu">
+        <div className="py-5 text-center text-white bg-secondary" id="menu">
+          <h1 className="py-5 fw-bold">MENU</h1>
+          <div className="d-lg-flex mx-auto pb-5 menu-w">
+            <div className="list-w">
+              <h2 className="pb-3 fw-bold">CUT</h2>
+              <ListGroup variant="flush" className="bg-none">
+                <ListGroup.Item className="d-flex justify-content-between bg-none">
+                  <p>カット</p>
+                  <p>¥4000</p>
+                </ListGroup.Item>
+                <ListGroup.Item  className="d-flex justify-content-between">
+                  <p>スクールカット</p>
+                  <p>¥3500</p>
+                </ListGroup.Item>
+              </ListGroup>
+            </div>
+            <div className="list-w">
+              <h2 className="pb-3 fw-bold">COLOR</h2>
+              <ListGroup variant="flush">
+                <ListGroup.Item className="d-flex justify-content-between">
+                  <p>シングルカラー</p>
+                  <p>¥4000</p>
+                </ListGroup.Item>
+                <ListGroup.Item  className="d-flex justify-content-between">
+                  <p>イルミナカラー</p>
+                  <p>¥3500</p>
+                </ListGroup.Item>
+                <ListGroup.Item  className="d-flex justify-content-between">
+                  <p>オーガニックカラー</p>
+                  <p>¥3500</p>
+                </ListGroup.Item>
+                <ListGroup.Item  className="d-flex justify-content-between">
+                  <p>バレイヤージュカラー</p>
+                  <p>¥3500</p>
+                </ListGroup.Item>
+                <ListGroup.Item  className="d-flex justify-content-between">
+                  <p>ホイルウィービング５枚~</p>
+                  <p>¥3500</p>
+                </ListGroup.Item>
+                <ListGroup.Item  className="d-flex justify-content-between">
+                  <p>グラデーションカラー</p>
+                  <p>¥3500</p>
+                </ListGroup.Item>
+              </ListGroup>
+            </div>
+            <div className="list-w">
+              <h2 className="pb-3 fw-bold">PERM</h2>
+              <ListGroup variant="flush">
+                <ListGroup.Item className="d-flex justify-content-between">
+                  <p>ナチュラルウェーブ</p>
+                  <p>¥4000</p>
+                </ListGroup.Item>
+                <ListGroup.Item  className="d-flex justify-content-between">
+                  <p>デジタルパーマ</p>
+                  <p>¥3500</p>
+                </ListGroup.Item>
+              </ListGroup>
+            </div>
+          </div>
           
         </div>
-        <div className="vh-100 bg-secondary" id="catalog">
+        <div className="min-vh-100 py-5 text-center bg-dark" id="catalog">
+          <h1 className="py-5 fw-bold text-white">CATALOG</h1>
+          <div className="d-lg-flex mx-auto catalog-w">
+            <Card>
+              <Card.Img variant="top" src="/catalog-sample.jpg/" />
+              <Card.Body>
+                <Card.Title>Card Title</Card.Title>
+                <Card.Text>
+                  Some quick example text to build on the card title and make up the
+                  bulk of the card's content.
+                </Card.Text>
+              </Card.Body>
+            </Card>
+            <Card>
+              <Card.Img variant="top" src="/catalog-sample2.jpg/" />
+              <Card.Body>
+                <Card.Title>Card Title</Card.Title>
+                <Card.Text>
+                  Some quick example text to build on the card title and make up the
+                  bulk of the card's content.
+                </Card.Text>
+              </Card.Body>
+            </Card>
+            <Card>
+              <Card.Img variant="top" src="/catalog-sample3.jpg/" />
+              <Card.Body>
+                <Card.Title>Card Title</Card.Title>
+                <Card.Text>
+                  Some quick example text to build on the card title and make up the
+                  bulk of the card's content.
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          </div>
+          <a className="btn btn-success p-3 my-5 text-white" href="#reserve">
+            View More
+          </a>
+        </div>
+        <div className="vh-100 bg-secondary" id="staff">
           
         </div>
-        <div className="vh-100 bg-success" id="staff">
-          
-        </div>
-        <div className="vh-100 bg-warning" id="reserve">
+        <div className="vh-100" id="reserve">
           
         </div>
         <div className="vh-100 bg-info" id="access">

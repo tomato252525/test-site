@@ -43,6 +43,41 @@ a.nav-link:hover {
 main {
 }
 
+.news-w {
+  max-width: 700px;
+}
+
+.menu-w {
+  max-width: 1180px;
+}
+
+.list-w {
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+#menu .list-group-item {
+  background-color: rgba(var(--bs-secondary-rgb),var(--bs-bg-opacity));
+  color: white;
+  border-color: white;
+  margin: 0 24px;
+  padding: 12px 16px;
+}
+
+#menu p {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.catalog-w {
+  max-width: 1180px;
+}
+
+#catalog .card {
+  margin: 10px;
+  width: 100%;
+}
+
 @media (max-width: 991px) {
   a.navbar-brand {
     font-size: 25px;
@@ -51,5 +86,9 @@ main {
   a.nav-link {
     text-align: right;
     font-size: 20px;
+  }
+
+  #catalog .card {
+    margin: 10px 0;
   }
 }
