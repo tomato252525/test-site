@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "@next/font": "13.1.5",
+    "@sendgrid/mail": "^7.7.0",
     "bootstrap": "^5.2.3",
+    "dotenv": "^16.0.3",
     "eslint": "8.32.0",
     "eslint-config-next": "13.1.5",
     "microcms-js-sdk": "^2.3.2",

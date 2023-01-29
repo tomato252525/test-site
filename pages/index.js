@@ -2,6 +2,7 @@ import Head from 'next/head'
 import { Inter } from '@next/font/google'
 import { client } from "@/libs/client";
 import 'bootstrap/dist/css/bootstrap.min.css'
+import React, { useRef } from "react";
 import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
@@ -27,6 +28,37 @@ export const getStaticProps = async() => {
 
 export default function Home({ news, createDate }) {
   var i = 0;
+  const nameRef = useRef(null);
+  const addressRef = useRef(null);
+  const messageRef = useRef(null);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    let name = nameRef.current?.value;
+    if (name == "") {
+      name = "名無し";
+    }
+
+    let data = {
+      name: name,
+      address: addressRef.current?.value,
+      message: messageRef.current?.value,
+    }
+
+    await fetch("api/contact", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }).then((res) => {
+      if (res.status === 200) {
+        messageRef.current.value = "送信しました。";
+        console.log("メール送信成功");
+      };
+    });
+  };
   return (
     <>
       <Head>
@@ -45,7 +77,6 @@ export default function Home({ news, createDate }) {
               <Nav.Link href="#news" className="px-3">News</Nav.Link>
               <Nav.Link href="#menu" className="px-3">Menu</Nav.Link>
               <Nav.Link href="#catalog" className="px-3">Catalog</Nav.Link>
-              <Nav.Link href="#staff" className="px-3">Staff</Nav.Link>
               <Nav.Link href="#reserve" className="px-3">Reserve</Nav.Link>
               <Nav.Link href="#access" className="px-3">Access</Nav.Link>
             </Nav>
@@ -142,7 +173,6 @@ export default function Home({ news, createDate }) {
               </ListGroup>
             </div>
           </div>
-          
         </div>
         <div className="min-vh-100 py-5 text-center bg-dark" id="catalog">
           <h1 className="py-5 fw-bold text-white">CATALOG</h1>
@@ -178,17 +208,31 @@ export default function Home({ news, createDate }) {
               </Card.Body>
             </Card>
           </div>
-          <a className="btn btn-success p-3 my-5 text-white" href="#reserve">
+          <a className="btn btn-success p-3 my-5 text-white" href="./catalog">
             View More
           </a>
         </div>
-        <div className="vh-100 bg-secondary" id="staff">
-          
+        <div className="vh-100 py-5 text-white bg-secondary" id="reserve">
+          <h1 className="py-5 fw-bold text-center">RESERVE</h1>
+          <div className="w-75">
+            <form onSubmit={(e) => handleSubmit(e)}>
+              <div className="mb-3">
+                <label htmlFor="name" className="form-label">ニックネーム (入力しなくても構いません)</label>
+                <input type="text" className="form-control" id="name" ref={nameRef} />
+              </div>
+              <div className="mb-3">
+                <label htmlFor="name" className="form-label">メールアドレス or TwitterID (返答をご希望の方のみ入力)</label>
+                <input type="text" className="form-control" id="name" ref={addressRef} />
+              </div>
+              <div className="mb-3">
+                <label htmlFor="message" className="form-label">内容 (送信完了時に内容が「送信しました。」と変更されます)</label>
+                <textarea name="message" id="message" className="form-control cc" ref={messageRef} required></textarea>
+              </div>
+              <button type="submit" className="btn btn-danger mb-5">送信</button>
+            </form>
+          </div>
         </div>
-        <div className="vh-100" id="reserve">
-          
-        </div>
-        <div className="vh-100 bg-info" id="access">
+        <div className="vh-100" id="access">
           
         </div>
       </main>
