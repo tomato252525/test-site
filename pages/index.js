@@ -214,21 +214,22 @@ export default function Home({ news, createDate }) {
         </div>
         <div className="vh-100 py-5 text-white bg-secondary" id="reserve">
           <h1 className="py-5 fw-bold text-center">RESERVE</h1>
-          <div className="w-75">
-            <form onSubmit={(e) => handleSubmit(e)}>
+          <div className="w-50 mx-auto">
+            <form className="w-100 text-center" onSubmit={(e) => handleSubmit(e)}>
+              <a className="tel d-inline-block bg-dark p-3 mb-3" href="tel:000-000-0000">電話予約：000-000-0000</a>
               <div className="mb-3">
-                <label htmlFor="name" className="form-label">ニックネーム (入力しなくても構いません)</label>
-                <input type="text" className="form-control" id="name" ref={nameRef} />
+                <label htmlFor="name" className="form-label">お名前</label>
+                <input type="text" className="form-control" id="name" ref={nameRef} required />
               </div>
               <div className="mb-3">
-                <label htmlFor="name" className="form-label">メールアドレス or TwitterID (返答をご希望の方のみ入力)</label>
-                <input type="text" className="form-control" id="name" ref={addressRef} />
+                <label htmlFor="email" className="form-label">メールアドレス</label>
+                <input type="email" className="form-control" id="email" ref={addressRef} required />
               </div>
               <div className="mb-3">
                 <label htmlFor="message" className="form-label">内容 (送信完了時に内容が「送信しました。」と変更されます)</label>
-                <textarea name="message" id="message" className="form-control cc" ref={messageRef} required></textarea>
+                <textarea name="message" id="message" className="form-control" ref={messageRef} required></textarea>
               </div>
-              <button type="submit" className="btn btn-danger mb-5">送信</button>
+              <button type="submit" className="btn btn-danger mb-5 w-25 text-center">送信</button>
             </form>
           </div>
         </div>
