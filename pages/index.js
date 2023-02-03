@@ -11,7 +11,10 @@ import { Card, ListGroup } from 'react-bootstrap';
 const inter = Inter({ subsets: ['latin'] })
 
 export const getStaticProps = async() => {
-  const data = await client.get({ endpoint: "news" });
+  const offset = 0;
+    const limit = 100;
+    const queries = { offset: offset, limit: limit };
+  const data = await client.get({ endpoint: "news", queries: queries });
   const createDate = data.contents.map((content) => 
     new Date(Date.parse(content.publishedAt)+32400000)
     .toLocaleDateString('ja-JP')
